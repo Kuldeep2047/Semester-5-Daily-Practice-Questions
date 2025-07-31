@@ -1,6 +1,7 @@
 package LeetCode;
 
-public class Split_Array_Largest_Sum {
+public class Sum_of_Digits_in_Base_K
+ {
     
     public static void main(String[] args){
         int n = 34;
