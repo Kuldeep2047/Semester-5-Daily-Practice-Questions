@@ -1,24 +1,22 @@
-// Last updated: 8/18/2025, 9:38:37 PM
+// Last updated: 8/31/2025, 12:59:29 PM
 class Solution {
     public int climbStairs(int n) {
-        return stairs(n);
+        int[] dp = new int[n+1];
+        Arrays.fill(dp,-1);
+        return answer(n, 0, dp);
     }
-
-    public int stairs(int n){
-        if(n==1){
+    public int answer(int n, int idx, int[] dp){
+        if(idx == n){
             return 1;
-        }else if(n==2){
-            return 2;
         }
-        
-        int a = 1;
-        int b = 2;
-        for(int i=3;i<=n;i++){
-            int curr = a+b;
-            a = b;
-            b = curr;
-
+        if(idx>n){
+            return 0;
         }
-        return b;
+        if(dp[idx] != -1){
+            return dp[idx];
+        }
+        int one = answer(n, idx+1, dp);
+        int two = answer(n, idx+2, dp);
+        return dp[idx] = one +two;
     }
 }
