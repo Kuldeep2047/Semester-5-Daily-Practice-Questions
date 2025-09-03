@@ -1,24 +1,21 @@
-// Last updated: 8/31/2025, 10:24:37 PM
+// Last updated: 9/3/2025, 12:35:48 PM
 class Solution {
     public int lengthOfLIS(int[] nums) {
         // return answer(0,-1,nums,nums.length);
         return answer2(nums);
     }
     public int answer2(int[] arr){
-        int n = arr.length;
-        int[] dp = new int[n];
-        Arrays.fill(dp,1);
-
-        int ans = 1;
-        for(int i=0;i<n;i++){
-            for(int j=0;j<i;j++){
-                if(arr[i] > arr[j]){
-                    dp[i] = Math.max(dp[i], dp[j] +1);
-                }
-            }
-            ans = Math.max(dp[i], ans);
-        }
-        return ans;
+        int[] dp = new int[arr.length];
+		Arrays.fill(dp, 1);
+		for(int i=1;i<dp.length;i++) {
+			for(int j = i-1; j>=0;j--) {
+				if(arr[i]>arr[j]) {
+					int x = dp[j];
+					dp[i] = Math.max(dp[i], x+1);
+				}
+			}
+		}
+		return Arrays.stream(dp).max().getAsInt();
     }
 
     // = > This give TLE
