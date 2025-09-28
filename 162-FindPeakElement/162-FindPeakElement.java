@@ -1,4 +1,4 @@
-// Last updated: 8/9/2025, 1:44:51 PM
+// Last updated: 9/28/2025, 3:14:59 PM
 class Solution {
     public int findPeakElement(int[] nums) {
         int left = 0;
