@@ -1,22 +1,18 @@
-// Last updated: 9/29/2025, 12:03:40 PM
+// Last updated: 9/29/2025, 1:13:48 PM
 class Solution {
-    public int[][] construct2DArray(int[] arr, int r, int c) {
-        int idx =0;
-        if(arr.length!=r*c) return new int[0][0];
-        int[][] mat = new int[r][c];
-        for(int i=0;i<r;i++){
-            for(int j=0;j<c;j++){
-                mat[i][j] = arr[idx++];
-            }
-        }
-
-        // for(int i=0;i<r;i++){
-        //     for(int j=0;j<c;j++){
-        //         System.out.print(mat[i][j]+" ");
-        //     }
-        //     System.out.println(" ");
-        // }
-        return mat;
+    public int maximumWealth(int[][] accounts) {
+        return answer(accounts);
     }
-    
+    public int answer(int[][] arr){
+        int ans = Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++){
+            int sum =0;
+            for(int j=0;j<arr[0].length ;j++){
+                sum += arr[i][j];
+            }
+            ans = Math.max(ans,sum);
+            
+        }
+        return ans;
+    }
 }
