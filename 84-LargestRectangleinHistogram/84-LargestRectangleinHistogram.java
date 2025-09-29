@@ -1,21 +1,22 @@
-// Last updated: 9/29/2025, 3:50:39 PM
+// Last updated: 9/29/2025, 9:31:46 PM
 class Solution {
     public int largestRectangleArea(int[] heights) {
-        return Largest_Histogram(heights);
+        return Largest_Rectangle(heights);
     }
-    public int Largest_Histogram(int[] arr){
-        int n = arr.length;
-        int area =0;
+    public int Largest_Rectangle(int[] arr){
         Stack<Integer> st = new Stack<>();
+        int n = arr.length;
+        int ans =0;
+
         for(int i=0;i<n;i++){
-            while( !st.isEmpty() && arr[i] < arr[st.peek()]){
-                int  h = arr[st.pop()];
-                int r =i;
+            while(!st.isEmpty() && arr[i]<arr[st.peek()]){
+                int h = arr[st.pop()];
+                int r = i;
                 if(st.isEmpty()){
-                    area = Math.max(area, h*r);
+                    ans = Math.max(ans , h*r);
                 }else{
                     int l = st.peek();
-                    area = Math.max(area , h* (r-l-1));
+                    ans = Math.max(ans, h*(r-l-1));
                 }
 
             }
@@ -23,14 +24,15 @@ class Solution {
         }
         int r = n;
         while(!st.isEmpty()){
-            int  h = arr[st.pop()];
+            int h = arr[st.pop()];
             if(st.isEmpty()){
-                area = Math.max(area, h*r);
+                ans = Math.max(ans , h*r);
             }else{
                 int l = st.peek();
-                area = Math.max(area , h* (r-l-1));
+                ans = Math.max(ans, h*(r-l-1));
             }
         }
-        return area;
+        return ans;
+
     }
 }
