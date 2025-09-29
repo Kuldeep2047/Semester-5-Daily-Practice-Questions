@@ -1,4 +1,4 @@
-// Last updated: 8/9/2025, 1:45:48 PM
+// Last updated: 9/29/2025, 2:13:46 PM
 class Solution {
     public void setZeroes(int[][] matrix) {
         
@@ -14,9 +14,7 @@ class Solution {
                 }
             }
         }
-        assign_zero(matrix,row,col);
-        
-        
+        assign_zero(matrix,row,col);    
     }
     public static int[][] assign_zero(int[][] arr,int[] row,int[] col){
         for(int i=0;i<arr.length;i++){
