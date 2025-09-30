@@ -1,43 +1,42 @@
-// Last updated: 9/30/2025, 11:38:34 AM
+// Last updated: 9/30/2025, 8:39:35 PM
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
-        return AnagramIndex(s,p);
+        return Anagrams(s,p);
     }
-    public List<Integer> AnagramIndex(String s ,String p){
+    public static List<Integer> Anagrams(String s , String p){
+        int[] arr = new int[26];
+        int m = p.length();
+        int n = s.length();
         List<Integer> ll = new ArrayList<>();
+        for(int i=0;i<m;i++){
+            arr[p.charAt(i)-'a']++;
+        }
         int si =0;
         int ei =0;
-        int[] sCount = new int[26];
-        int[] pCount = new int[26];
-        for(int i=0 ;i<p.length() ;i++){
-            pCount[p.charAt(i)-'a']++;
-        }
-        int k = p.length();
-        while(ei<s.length()){
-            while(ei-si+1> k){
-                if(isAnagram(pCount, sCount)){
+        while(ei<n){
+            arr[s.charAt(ei)-'a']--;
+
+            while(ei-si+1 == m && si<n){
+                if(isZero(arr)){
                     ll.add(si);
                 }
-                sCount[s.charAt(si)-'a']--;
+                arr[s.charAt(si)-'a']++;
                 si++;
-        
             }
-            sCount[s.charAt(ei)-'a']++;
+
             ei++;
-        }
-        if(isAnagram(pCount, sCount)){
-            ll.add(s.length() - k);
+
         }
         return ll;
+
     }
-    public static boolean isAnagram(int[] a, int[] b){
-        for(int i=0 ;i<a.length ;i++){
-            if(a[i] != b[i]){
+
+    public static boolean isZero(int[] arr){
+        for(int a:arr){
+            if(a != 0){
                 return false;
             }
         }
         return true;
     }
-
-    
 }
