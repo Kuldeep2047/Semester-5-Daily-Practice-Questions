@@ -1,4 +1,4 @@
-// Last updated: 9/30/2025, 8:46:08 PM
+// Last updated: 9/30/2025, 8:46:26 PM
 class Solution {
     public boolean checkInclusion(String s1, String s2) {
         return Anagrams(s2,s1);
@@ -7,7 +7,7 @@ class Solution {
         int[] arr = new int[26];
         int m = p.length();
         int n = s.length();
-        // List<Integer> ll = new ArrayList<>();
+        
         for(int i=0;i<m;i++){
             arr[p.charAt(i)-'a']++;
         }
@@ -18,7 +18,7 @@ class Solution {
 
             while(ei-si+1 == m && si<n){
                 if(isZero(arr)){
-                    // ll.add(si);
+                    
                     return true;
                 }
                 arr[s.charAt(si)-'a']++;
