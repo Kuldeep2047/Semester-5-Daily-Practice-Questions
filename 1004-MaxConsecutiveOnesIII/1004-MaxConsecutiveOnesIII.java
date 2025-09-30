@@ -1,30 +1,31 @@
-// Last updated: 9/30/2025, 8:53:48 PM
+// Last updated: 9/30/2025, 8:54:39 PM
 class Solution {
     public int longestOnes(int[] nums, int k) {
-        return consecutive_ones(nums,k);
+        return Consecutive_Ones_III(nums ,k);
     }
 
-    public static int consecutive_ones(int[] nums,int k){
-        int si=0, ei=0;
-        int c =0;
-        int ans=0;
-        while(ei<nums.length){
-            if(nums[ei]==0){
+    public static int Consecutive_Ones_III(int[] arr ,int k){
+        int n = arr.length;
+        int si =0;
+        int ei =0;
+        int ans =0;
+        int c=0;
+
+        while(ei<n){
+            if(arr[ei]==0){
                 c++;
             }
-            while(c>k && si<=ei ){
-                if(nums[si]==0){
+            while(c>k && si<=ei){
+                if(arr[si] == 0){
                     c--;
+                    
                 }
                 si++;
             }
 
-            ans = Math.max(ans,ei-si+1);
+            ans = Math.max(ans, ei-si+1);
             ei++;
-
-
         }
         return ans;
     }
-
 }
