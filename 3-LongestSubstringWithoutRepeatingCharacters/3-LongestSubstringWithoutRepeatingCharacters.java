@@ -1,14 +1,13 @@
-// Last updated: 9/30/2025, 8:25:51 PM
+// Last updated: 9/30/2025, 8:26:28 PM
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        return answer(s);
+        return LongestSubstring(s);
     }
-    public int answer(String s){
-        // Set<Character> set = new HashSet<>();
-        int si=0;
-        int ei =0;
-        // int len =0;
+    public int LongestSubstring(String s){
         int ans =0;
+
+        int si =0;
+        int ei =0;
         int[] arr = new int[255];
         while(ei < s.length()){
             while(arr[s.charAt(ei)]>0){
@@ -16,10 +15,10 @@ class Solution {
                 si++;
             }
             arr[s.charAt(ei)]++;
-            ans = Math.max(ans, ei-si+1);
+            
+            ans = Math.max(ans , ei-si+1);
             ei++;
         }
         return ans;
-       
     }
 }
