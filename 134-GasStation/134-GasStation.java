@@ -1,4 +1,4 @@
-// Last updated: 8/9/2025, 1:45:14 PM
+// Last updated: 10/1/2025, 10:57:57 PM
 class Solution {
     public int canCompleteCircuit(int[] gas, int[] cost) {
         return canComplete(gas,cost);
