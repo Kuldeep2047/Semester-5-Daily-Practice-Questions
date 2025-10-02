@@ -1,20 +1,20 @@
-// Last updated: 10/1/2025, 2:46:58 PM
+// Last updated: 10/2/2025, 8:59:32 PM
 class Solution {
     public int jump(int[] nums) {
         return Jump_2(nums);
     }
     public static int Jump_2(int[] arr){
         int n = arr.length;
-        int maxJump = 0;
-        int count =0;
-        int endJump = 0;
+        int farthest = 0;
+        int jump =0;
+        int end = 0;
         for(int i = 0; i< n-1;i++){
-            maxJump = Math.max(maxJump, arr[i]+i);
-            if(i == endJump){
-                count++;
-                endJump = maxJump;
+            farthest = Math.max(farthest, arr[i]+i);
+            if(i == end){
+                jump++;
+                end = farthest;
             }
         }
-        return count;
+        return jump;
     }
 }
