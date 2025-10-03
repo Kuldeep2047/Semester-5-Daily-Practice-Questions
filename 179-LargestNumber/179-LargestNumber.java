@@ -1,32 +1,25 @@
-// Last updated: 10/1/2025, 10:55:52 PM
+// Last updated: 10/3/2025, 12:19:48 PM
 class Solution {
     public String largestNumber(int[] nums) {
         return largest_num(nums);
     }
     public static String largest_num(int[] nums){
-        int n = nums.length;
-        int f = 0;
-        for(int i=0; i<n; i++) {
-            if(nums[i]!=0) {
-                f = 1;
-                break;
-            }
+        String[] arr=new String[nums.length];
+        for(int i=0;i<nums.length;i++){
+            arr[i]=String.valueOf(nums[i]);
         }
-        if(f==0) {
+        Arrays.sort(arr, (a, b) -> (b + a).compareTo(a + b));
+
+        
+        if(arr[0].equals("0")){
             return "0";
         }
 
-        String[] arr = new String[n];
-        for(int i=0; i<n; i++) {
-            arr[i] = Integer.toString(nums[i]);
-        }
-
-        Arrays.sort(arr, (a, b) -> (b + a).compareTo(a + b));
-        StringBuilder sb  = new StringBuilder();
-        for(int i=0; i<n; i++) {
+        StringBuilder sb=new StringBuilder();
+        for(int i=0;i<arr.length;i++){
             sb.append(arr[i]);
         }
-
         return sb.toString();
+    
     }
 }
