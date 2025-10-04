@@ -1,25 +1,27 @@
-// Last updated: 8/9/2025, 1:45:52 PM
+// Last updated: 10/4/2025, 9:33:59 PM
 class Solution {
     public int uniquePaths(int m, int n) {
-         int[][] dp = new int[m][n];
-        return Path(m-1, n - 1, 0, 0, "",dp);
+        int[][] dp = new int[m][n];
+        return paths(0, 0, m-1, n-1 ,dp);
     }
-    // er --> end row
-	// ec --> end col
-	// cr --> curr row
-	// cc --> curr col
-    public static int Path(int er, int ec, int cr, int cc, String ans,int[][] dp) {
-		if (cr == er && cc == ec) {
-			// System.out.println(ans);
-			return 1;
-		}
-		if (cr > er || cc > ec) {
-			return 0;
-		}
-        if (dp[cr][cc] != 0) return dp[cr][cc];
-		int a=Path(er, ec, cr, cc + 1, ans + "H",dp);
-		int b=Path(er, ec, cr + 1, cc, ans + "V",dp);
-		dp[cr][cc]= a+b;
-        return dp[cr][cc];
-	}
+
+    public static int paths(int cr, int cc, int er ,int ec, int[][] dp){
+        if(cr == er && cc == ec){
+            return 1;
+        }
+
+        if(cr > er || cc > ec){
+            return 0;
+        }
+
+        if(dp[cr][cc] != 0){
+            return dp[cr][cc];
+        }
+        
+        int a = paths(cr +1, cc, er, ec, dp);
+        int b = paths(cr , cc+1, er, ec, dp);
+
+        return dp[cr][cc] = a+b;
+        
+    }
 }
