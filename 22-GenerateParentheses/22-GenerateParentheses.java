@@ -1,21 +1,23 @@
-// Last updated: 8/9/2025, 1:46:34 PM
+// Last updated: 10/4/2025, 12:10:19 PM
 class Solution {
     public List<String> generateParenthesis(int n) {
-        ArrayList<String> ll = new ArrayList<>();
-		Parenthesis(n,0,0,"",ll);
-        return ll;
+        List<String> ans = new ArrayList<>();
+        Parentheses(n , ans, "", 0, 0);
+
+        return ans;
     }
-    public static void Parenthesis(int n,int closed,int open,String ans,List<String> ll) {
-		if(open==n && closed==n) {
-//			System.out.println(ans);
-			ll.add(ans);
-			return;
-		}
-		if(open>n || closed>open) {
-			return;
-		}
-		
-		Parenthesis(n,closed,open+1,ans+"(",ll);
-		Parenthesis(n,closed+1,open,ans+")",ll);
-	}
+
+    public static void Parentheses(int n, List<String> ans,String s, int open ,int close){
+        
+        if(open == n && close == n){
+            ans.add(s);
+            return;
+        }
+        if(open> n || close>open){
+            return;
+        }
+
+        Parentheses(n, ans, s+'(' , open+1, close);
+        Parentheses(n, ans, s+')', open, close+1);
+    }
 }
