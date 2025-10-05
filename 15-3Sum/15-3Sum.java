@@ -1,4 +1,4 @@
-// Last updated: 9/27/2025, 12:18:36 AM
+// Last updated: 10/5/2025, 9:25:43 PM
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         return answer(nums);
@@ -19,19 +19,20 @@ class Solution {
                 sum = (arr[i]+ arr[si] + arr[ei]);
                 if(sum ==0){
                     List<Integer> ll = new ArrayList<>();
-                    ll.add(arr[i]);
-                    ll.add(arr[si]);
-                    ll.add(arr[ei]);
-                    ans.add(ll);
+                    
+                    ans.add(Arrays.asList(arr[i], arr[si], arr[ei]));
                     si++;
                     ei--;
+
+                    while(si<ei && arr[si]==arr[si-1]) si++;
+                    while(si < ei && arr[ei] == arr[ei + 1]) ei--;
+                    
                 }else if(sum<0){
                     si++;
                 }else{
                     ei--;
                 }
-                while(si<ei && si>i+1 && arr[si]==arr[si-1]) si++;
-                while(si<ei && ei<arr.length-1 && arr[ei]==arr[ei+1]) ei--;
+                
             }
         }
         return ans;
