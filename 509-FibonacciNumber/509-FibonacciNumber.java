@@ -1,4 +1,4 @@
-// Last updated: 10/6/2025, 10:50:54 AM
+// Last updated: 10/6/2025, 10:53:30 AM
 class Solution {
     public int fib(int n) {
         int[] dp = new int[n+1];
@@ -6,15 +6,27 @@ class Solution {
         return answer(n ,dp);
     }
 
-    public int answer(int n, int[] dp){
-        if(n==0 || n==1){
-            return n;
-        }
-        if(dp[n] != -1){
-            return dp[n];
-        }
+    // public int answer(int n, int[] dp){
+    //     if(n==0 || n==1){
+    //         return n;
+    //     }
+    //     if(dp[n] != -1){
+    //         return dp[n];
+    //     }
 
-        dp[n] = answer(n-1, dp) + answer(n-2 ,dp);
+    //     dp[n] = answer(n-1, dp) + answer(n-2 ,dp);
+    //     return dp[n];
+    // }
+
+    public int answer(int n, int[] dp){
+        if(n==0){
+            return 0;
+        }
+        dp[0] = 0;
+        dp[1] =1;
+        for(int i=2 ;i<= n;i++){
+            dp[i] = dp[i-1] + dp[i-2];
+        }
         return dp[n];
     }
 }
