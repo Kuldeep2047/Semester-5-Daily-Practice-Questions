@@ -1,21 +1,28 @@
-// Last updated: 8/9/2025, 1:44:30 PM
+// Last updated: 10/6/2025, 2:31:52 PM
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
-        return minlen(target,nums);
+        return Subarray_Sum(target, nums);
     }
-    public static int minlen(int target,int[] nums){
-        int si=0,ei=0;
-        int sum=0;
+    public int Subarray_Sum(int target, int[] arr){
+        int n = arr.length;
+        int sum =0;
+        int si =0;
+        int ei =0;
+
         int ans = Integer.MAX_VALUE;
-        while(ei<nums.length){
-            sum += nums[ei];
-            while(sum>=target && si<=ei){
-                ans = Math.min(ans,ei-si+1);
-                sum -= nums[si];
+        while(ei < n){
+            sum += arr[ei];
+            while(sum >= target && si<=ei){
+                ans = Math.min(ans, ei-si+1);
+                sum -= arr[si];
                 si++;
             }
+
             ei++;
         }
-        return ans==Integer.MAX_VALUE ?0 : ans;
+        if(ans == Integer.MAX_VALUE){
+            return 0;
+        }
+        return ans;
     }
 }
