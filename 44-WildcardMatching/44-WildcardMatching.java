@@ -1,4 +1,4 @@
-// Last updated: 10/5/2025, 5:58:39 PM
+// Last updated: 10/6/2025, 10:07:14 AM
 class Solution {
     public boolean isMatch(String s, String p) {
         int[][] dp = new int[s.length()][p.length()];
