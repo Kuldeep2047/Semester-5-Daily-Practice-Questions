@@ -1,25 +1,26 @@
-// Last updated: 10/10/2025, 8:11:02 PM
+// Last updated: 10/10/2025, 8:11:40 PM
 class Solution {
-    public int minPathSum(int[][] grid) {
-        int[][] dp = new int[grid.length][grid[0].length];
-        for(int[] a:dp){
-            Arrays.fill(a,-1);
-        }
-        return answer(grid, dp, 0,0);
-        
+    public int change(int amount, int[] coins) {
+        return Coin_ChangeBU(coins,amount);
     }
-    public int answer(int[][] arr,int[][]dp,int r,int c){
-        if(r == arr.length-1 && c == arr[0].length-1){
-            return arr[r][c];
-        }
-        if(r>=arr.length || c>=arr[0].length){
-            return Integer.MAX_VALUE;
-        }
-        if(dp[r][c] != -1){
-            return dp[r][c];
-        }
-        int right = answer(arr,dp,r,c+1);
-        int down = answer(arr,dp,r+1,c);
-        return dp[r][c] = arr[r][c] + Math.min(right,down);
-    }
+    public static int Coin_ChangeBU(int[] coin,int amount) {
+		int[][] dp = new int[coin.length+1][amount+1];
+		for(int i=0;i<dp.length;i++) {
+			dp[i][0] = 1;				//base case hai
+		}
+		for (int i = 1; i < dp.length; i++) {
+			for (int am = 1; am < dp[0].length; am++) {
+				int inc = 0;
+				int exc = 0;
+				if(am>= coin[i-1]) {
+					inc = dp[i][am-coin[i-1]];
+				}
+				exc = dp[i-1][am];
+				dp[i][am] = inc + exc;
+			}
+			
+		}
+		return dp[dp.length-1][dp[0].length-1];
+		
+	}
 }
