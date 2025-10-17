@@ -1,28 +1,34 @@
-// Last updated: 10/6/2025, 11:07:15 PM
+// Last updated: 10/17/2025, 12:41:51 PM
 class Solution {
     public int evalRPN(String[] tokens) {
-        return RPN(tokens);
+        return answer(tokens);
     }
-    public static int RPN(String[] tokens){
-        Stack<Integer> s = new Stack<>();
-        for(int i=0;i<tokens.length;i++){
-            String ch = tokens[i];
+
+    public int answer(String[] arr){
+        Stack<Integer> st = new Stack<>();
+
+        int n = arr.length;
+        for(int i=0; i< n ;i++){
+            String ch= arr[i];
             if(ch.equals("+")){
-                s.push(s.pop() + s.pop());
-            }else if(ch.equals("-")){
-                int b = s.pop();
-                int a = s.pop();
-                s.push(a-b);
-            }else if(ch.equals("*")){
-                s.push(s.pop()*s.pop());
-            }else if(ch.equals("/")){
-                int b = s.pop();
-                int a = s.pop();
-                s.push(a/b);
+                st.push(st.pop() + st.pop());
+            }
+            else if(ch.equals("-")){
+                int a = st.pop();
+                int b = st.pop();
+                st.push(b-a);
+            }
+            else if(ch.equals("*")){
+                st.push(st.pop() * st.pop());
+            }
+            else if(ch.equals("/")){
+                int a = st.pop();
+                int b = st.pop();
+                st.push(b/a);
             }else{
-                s.push(Integer.parseInt(ch));
+                st.push(Integer.parseInt(ch));
             }
         }
-        return s.peek();
+        return st.peek();
     }
 }
