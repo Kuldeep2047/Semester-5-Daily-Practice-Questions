@@ -1,4 +1,4 @@
-// Last updated: 9/18/2025, 12:33:56 PM
+// Last updated: 10/17/2025, 11:51:58 AM
 class Solution {
     public int maxCoins(int[] arr) {
         int[]a=new int [arr.length+2];
