@@ -1,25 +1,26 @@
-// Last updated: 10/17/2025, 12:06:18 PM
+// Last updated: 10/21/2025, 2:11:53 PM
 class MinStack {
+
+    Stack<Integer> minSt;
     Stack<Integer> st;
-    Stack<Integer> stMin;
+
     public MinStack() {
         st = new Stack<>();
-        stMin = new Stack<>();
+        minSt = new Stack<>();
     }
     
     public void push(int val) {
         st.push(val);
-        if(stMin.isEmpty() || stMin.peek()>= val){
-            stMin.push(val);
+        if(minSt.isEmpty() || minSt.peek()>=val){
+            minSt.push(val);
         }
     }
     
     public void pop() {
         int n = st.pop();
-        if(n==stMin.peek()){
-            stMin.pop();
+        if(n == minSt.peek()){
+            minSt.pop();
         }
-        
     }
     
     public int top() {
@@ -27,7 +28,7 @@ class MinStack {
     }
     
     public int getMin() {
-        return stMin.peek();
+        return minSt.peek();
     }
 }
 
