@@ -1,4 +1,4 @@
-// Last updated: 9/29/2025, 9:55:03 PM
+// Last updated: 10/22/2025, 9:46:17 PM
 class Solution {
     public int maximalRectangle(char[][] matrix) {
         return maxRectangle(matrix);
