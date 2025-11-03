@@ -1,4 +1,4 @@
-// Last updated: 10/1/2025, 10:23:45 PM
+// Last updated: 11/3/2025, 9:06:44 PM
 class Solution {
     public int[][] reconstructQueue(int[][] people) {
         return Queue_Reconstruction(people);
@@ -6,15 +6,13 @@ class Solution {
     public static int[][] Queue_Reconstruction(int[][] arr){
         int n = arr.length;
 
-        Arrays.sort(arr, new Comparator<int[]>() {
-            public int compare(int[] a, int[] b) {
-                if (a[0] == b[0]) {
-                    return a[1] - b[1]; // smaller k first
-                } else {
-                    return b[0] - a[0]; // taller person first
-                }
-            }
+        Arrays.sort(arr, (a, b) -> {
+            if (a[0] == b[0])
+                return a[1] - b[1];
+            else
+                return b[0] - a[0];
         });
+
 
         List<int[]> ordered = new LinkedList<>();
         for (int i = 0; i < n; i++) {
