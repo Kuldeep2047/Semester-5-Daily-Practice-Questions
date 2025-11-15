@@ -1,4 +1,4 @@
-// Last updated: 8/9/2025, 1:46:43 PM
+// Last updated: 11/15/2025, 10:54:34 PM
 class Solution {
     public int maxArea(int[] height) {
         return Most_water(height);
@@ -10,9 +10,10 @@ class Solution {
         int ans=0;
         while(left<right){
             int width = right-left;
+
             int height = Math.min(arr[right],arr[left]);
-            int curr_sum=width*height;
-            ans=Math.max(ans,curr_sum);
+            ans=Math.max(ans, width*height);
+            
             if(arr[left]<arr[right]){
                 left++;
             }else{
