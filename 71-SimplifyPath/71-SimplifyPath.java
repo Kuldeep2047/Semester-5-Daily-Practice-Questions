@@ -1,4 +1,4 @@
-// Last updated: 10/7/2025, 6:23:36 PM
+// Last updated: 11/19/2025, 6:09:34 PM
 class Solution {
     public String simplifyPath(String path) {
         Stack<String> st = new Stack<>();
