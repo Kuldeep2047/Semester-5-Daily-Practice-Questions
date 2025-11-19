@@ -1,4 +1,4 @@
-// Last updated: 10/8/2025, 10:17:34 AM
+// Last updated: 11/19/2025, 6:29:10 PM
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -46,11 +46,9 @@ class Solution {
             
         }
         head.next = null;
-        // return head;
+        
         
 
     }
-    // public static void swap(List<Integer> ll){
-        
-    // }
+   
 }
