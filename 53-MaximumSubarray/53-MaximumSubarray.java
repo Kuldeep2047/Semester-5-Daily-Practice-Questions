@@ -1,20 +1,21 @@
-// Last updated: 8/9/2025, 1:46:04 PM
-class Solution {
-    public int maxSubArray(int[] nums) {
-        return Maximum_Sum(nums);
-        
-    }
-    public static int Maximum_Sum(int[] arr) {
-		int ans = Integer.MIN_VALUE;
-		int sum=0;
-		for(int i=0;i<arr.length;i++) {
-			sum+=arr[i];
-			ans=Math.max(ans, sum);
-			if(sum<0) {
-				sum=0;
-			}
-		}
-		return ans;
-			
-	}
-}
+// Last updated: 12/1/2025, 1:49:58 PM
+1class Solution {
+2    public int maxSubArray(int[] nums) {
+3        return answer(nums);
+4    }
+5
+6    public int answer(int[] arr){
+7        int n = arr.length;
+8        int ans = Integer.MIN_VALUE;
+9
+10        int sum = 0;
+11        for(int i=0 ;i<n ;i++){
+12            sum += arr[i];
+13            ans = Math.max(ans, sum);
+14            if(sum<0){
+15                sum =0;
+16            }
+17        }
+18        return ans;
+19    }
+20}
