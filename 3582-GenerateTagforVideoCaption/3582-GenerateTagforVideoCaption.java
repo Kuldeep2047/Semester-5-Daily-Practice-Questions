@@ -1,4 +1,4 @@
-// Last updated: 12/23/2025, 4:16:09 PM
+// Last updated: 12/23/2025, 4:17:58 PM
 1class Solution {
 2    public String generateTag(String caption) {
 3        if (caption == null || caption.trim().isEmpty()) {
