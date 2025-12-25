@@ -1,35 +1,24 @@
-// Last updated: 10/17/2025, 11:53:40 AM
-class Solution {
-    public int lengthOfLIS(int[] nums) {
-        return LIS(nums);
-    }
-    public static int LIS(int[] arr) {
-		int[] dp = new int[arr.length];
-		int len =1;
-		dp[0] = arr[0];
-		for(int i=1;i<dp.length;i++) {
-			if(arr[i] > dp[len-1]) {
-				dp[len] = arr[i];
-                len++;
-			}else {
-				int idx = BinarySearch(dp, 0, len -1, arr[i]);
-				dp[idx] = arr[i];
-			}
-		}
-		return len;
-	}
-	public static int BinarySearch(int[] dp, int si, int ei, int item) {
-		int idx =0;
-		while(si<=ei) {
-			int mid = (si+ei)/2;
-			if(dp[mid]>=item) {
-				idx = mid;
-				ei = mid-1;
-			}else {
-				si = mid+1;
-			}
-		}
-		return idx;
-		
-	}
-}
+// Last updated: 12/25/2025, 10:16:03 PM
+1class Solution {
+2    public int lengthOfLIS(int[] nums) {
+3        return answer(nums);
+4    }
+5    public int answer(int[] arr){
+6        int n = arr.length;
+7        int[] dp = new int[n];
+8        Arrays.fill(dp ,1);
+9        int max =1;
+10
+11        for(int i=1 ;i<n ;i++){
+12            for(int j=i-1 ;j>=0 ;j--){
+13                if(arr[i] > arr[j]){
+14                    dp[i] = Math.max(dp[i], dp[j]+1);
+15
+16                    max = Math.max(max, dp[i]);
+17                }
+18            }
+19        }
+20        return max;
+21
+22    }
+23}
