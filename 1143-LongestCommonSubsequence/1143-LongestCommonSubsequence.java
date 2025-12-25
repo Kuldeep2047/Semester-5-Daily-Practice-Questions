@@ -1,49 +1,32 @@
-// Last updated: 9/4/2025, 11:10:33 AM
-class Solution {
-    public int longestCommonSubsequence(String s1, String s2) {
-        // int[][] dp = new int[s1.length()][s2.length()];
-		// for(int[] a:dp) {
-		// 	Arrays.fill(a, -1);
-		// }
-        // return LCS(s1,s2,0,0,dp);
-        return LCSBU(s1,s2);
-        
-    }
-    public static int LCSBU(String s1,String s2) {
-		int[][] dp = new int[s1.length()+1][s2.length()+1];
-		for(int i=1;i<dp.length;i++) {
-			for(int j=1;j<dp[0].length;j++) {
-				int ans =0;
-				if(s1.charAt(i-1) == s2.charAt(j-1)) {
-					ans = 1+ dp[i-1][j-1];
-				}else {
-					int f = dp[i-1][j];
-					int s = dp[i][j-1];
-					ans = Math.max(f, s);
-				}
-				dp[i][j] = ans;
-			}
-		}
-		return dp[dp.length-1][dp[0].length-1];
-	}
-
-
-    // public static int LCS(String s1, String s2,int i,int j, int[][] dp) {
-	// 	if(i==s1.length() || j== s2.length()) {
-	// 		return 0;
-	// 	}
-	// 	if(dp[i][j] != -1) {
-	// 		return dp[i][j];
-	// 	}
-		
-	// 	int ans =0;
-	// 	if(s1.charAt(i) == s2.charAt(j)) {
-	// 		ans = 1+ LCS(s1,s2,i+1,j+1,dp);
-	// 	}else {
-	// 		int f = LCS(s1,s2, i+1,j,dp);
-	// 		int s = LCS(s1,s2 , i ,j+1,dp);
-	// 		ans = Math.max(f, s);
-	// 	}
-	// 	return dp[i][j] = ans;
-	// }
-}
+// Last updated: 12/25/2025, 11:35:30 PM
+1class Solution {
+2    public int longestCommonSubsequence(String text1, String text2) {
+3        int[][] dp = new int[text1.length()][text2.length()];
+4        for(int[] arr : dp){
+5            Arrays.fill(arr, -1);
+6        }
+7
+8        return LCS(text1, text2, 0,0,dp);
+9    }
+10
+11    public int LCS(String s1 ,String s2, int i,int j, int[][] dp){
+12        if(i == s1.length() || j == s2.length()){
+13            return 0;
+14        }
+15        if(dp[i][j] != -1){
+16            return dp[i][j];
+17        }
+18
+19        int ans =0;
+20        if(s1.charAt(i) == s2.charAt(j)){
+21            ans = 1+ LCS(s1,s2,i+1,j+1, dp);
+22        }
+23        else{
+24            int a = LCS(s1,s2,i,j+1, dp);
+25            int b = LCS(s1,s2,i+1,j, dp);
+26            ans = Math.max(a,b);
+27        }
+28
+29        return dp[i][j] = ans;
+30    }
+31}
