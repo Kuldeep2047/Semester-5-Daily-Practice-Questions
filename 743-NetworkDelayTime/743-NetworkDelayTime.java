@@ -1,4 +1,4 @@
-// Last updated: 12/31/2025, 3:36:28 PM
+// Last updated: 12/31/2025, 3:38:29 PM
 1class Solution {
 2    public int networkDelayTime(int[][] times, int n, int k) {
 3        return answer(times, n, k);
@@ -56,7 +56,7 @@
 55        HashMap<Integer, Integer> find = new HashMap<>();
 56        Dijkstra(map, k, find);
 57
-58        if(find.size() != n){
+58        if(find.size() < n){
 59            return -1;
 60        }
 61        int max = Integer.MIN_VALUE;
