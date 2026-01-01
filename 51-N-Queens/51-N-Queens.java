@@ -1,4 +1,4 @@
-// Last updated: 1/1/2026, 10:41:57 AM
+// Last updated: 1/1/2026, 11:31:04 AM
 1class Solution {
 2    public List<List<String>> solveNQueens(int n) {
 3        char[][] board = new char[n][n];
@@ -17,57 +17,55 @@
 16                StringBuilder sb = new StringBuilder();
 17                for(int j=0;j<board[0].length ;j++){
 18                    char ch = board[i][j];
-19                    if(ch != '.'){
-20                        sb.append(ch);
-21                    }else{
-22                        sb.append(ch);
-23                    }
-24                }
-25                ll.add(sb.toString());
-26            }
-27            res.add(ll);
-28            return;
-29        }
-30        for(int col =0 ;col<board[0].length ;col++){
-31            if(isSafe(board, row, col)){
-32                board[row][col] = 'Q';
-33                Place_Queen(board, row+1, tq-1, res);
-34                board[row][col] =  '.';
-35            }
-36        }
-37    }
-38
-39    public static boolean isSafe(char[][] board, int row, int col){
-40        //use cell ke uper check
-41        int r= row-1;
-42        while(r>=0){
-43            if(board[r][col] == 'Q'){
-44                return false;
-45            }
-46            r--;
-47        }
-48
-49        //us cell ke left diagonal per
-50        r= row;
-51        int c = col;
-52        while(r>=0 && c>=0){
-53            if(board[r][c] == 'Q'){
-54                return false;
-55            }
-56            r--;
-57            c--;
-58        } 
-59        //us cell ke right diagonal per
-60        r = row;
-61        c = col;
-62        while(r>=0 && c<board[0].length){
-63            if(board[r][c] == 'Q'){
-64                return false;
-65            }
-66            r--;
-67            c++;
-68        }
-69        return true;
-70        
-71    }
-72}
+19                    sb.append(ch);
+20                    
+21                }
+22                ll.add(sb.toString());
+23            }
+24            res.add(ll);
+25            return;
+26        }
+27        for(int col =0 ;col<board[0].length ;col++){
+28            if(isSafe(board, row, col)){
+29                board[row][col] = 'Q';
+30                Place_Queen(board, row+1, tq-1, res);
+31                board[row][col] =  '.';
+32            }
+33        }
+34    }
+35
+36    public static boolean isSafe(char[][] board, int row, int col){
+37        //use cell ke uper check
+38        int r= row-1;
+39        while(r>=0){
+40            if(board[r][col] == 'Q'){
+41                return false;
+42            }
+43            r--;
+44        }
+45
+46        //us cell ke left diagonal per
+47        r= row-1;
+48        int c = col-1;
+49        while(r>=0 && c>=0){
+50            if(board[r][c] == 'Q'){
+51                return false;
+52            }
+53            r--;
+54            c--;
+55        }
+56
+57        //us cell ke right diagonal per
+58        r = row -1 ;
+59        c = col +1;
+60        while(r>=0 && c<board[0].length){
+61            if(board[r][c] == 'Q'){
+62                return false;
+63            }
+64            r--;
+65            c++;
+66        }
+67        return true;
+68        
+69    }
+70}
