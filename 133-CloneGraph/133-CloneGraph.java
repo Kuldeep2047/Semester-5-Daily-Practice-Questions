@@ -1,4 +1,4 @@
-// Last updated: 1/2/2026, 11:31:41 AM
+// Last updated: 1/2/2026, 11:35:06 AM
 1/*
 2// Definition for a Node.
 3class Node {
@@ -26,18 +26,18 @@
 25        }
 26
 27        HashMap<Node, Node> map = new HashMap<>();
-28        Queue<Node> q=  new LinkedList<>();
+28        Stack<Node> st = new Stack<>();
 29
-30        q.add(node);
+30        st.push(node);
 31        map.put(node, new Node(node.val));
 32
-33        while(!q.isEmpty()){
-34            Node r = q.poll();
+33        while(!st.isEmpty()){
+34            Node r = st.pop();
 35
 36            for(Node nbrs : r.neighbors){
 37                if(!map.containsKey(nbrs)){
 38                    map.put(nbrs, new Node(nbrs.val));
-39                    q.add(nbrs);
+39                    st.push(nbrs);
 40                }
 41                map.get(r).neighbors.add(map.get(nbrs));
 42            }
