@@ -1,4 +1,4 @@
-// Last updated: 1/2/2026, 3:49:53 PM
+// Last updated: 1/2/2026, 3:53:26 PM
 1/**
 2 * Definition for a binary tree node.
 3 * public class TreeNode {
@@ -14,47 +14,30 @@
 13 *     }
 14 * }
 15 */
-16
-17class Solution {
-18    public int diameterOfBinaryTree(TreeNode root) {
-19        return diameter(root).dt;
-20    }
-21    public DiaPair diameter(TreeNode root) {
-22        if(root==null){
-23            return new DiaPair();
+16class Solution {
+17    public int diameterOfBinaryTree(TreeNode root) {
+18        return answer(root);
+19    }
+20
+21    public int answer(TreeNode root){
+22        if(root == null){
+23            return 0;
 24        }
-25        DiaPair ldp = diameter(root.left); //dt ht
-26        DiaPair rdp = diameter(root.right); //dt ht
-27        int sd = ldp.ht + rdp.ht +2;
-28        DiaPair sdp = new DiaPair();
-29        sdp.dt = Math.max(sd,Math.max(rdp.dt,ldp.dt));
-30        sdp.ht = Math.max(ldp.ht,rdp.ht)+1;
-31        return sdp;
-32
-33    }
-34    class DiaPair{
-35        int dt =0;
-36        int ht = -1;
-37    }
-38    
-39}
-40
-41// class Solution {
-42//     public int diameterOfBinaryTree(TreeNode root) {
-43//         if(root==null){
-44//             return 0;
-45//         }
-46//         int ld = diameterOfBinaryTree(root.left);
-47//         int rd = diameterOfBinaryTree(root.right);
-48//         int sd = ht(root.left)+ht(root.right)+2;
-49//         return Math.max(sd,Math.max(rd,ld));
-50//     }
-51//     public int ht(TreeNode root){
-52//         if(root==null){
-53//             return -1;
-54//         }
-55//         int lh = ht(root.left);
-56//         int rh = ht(root.right);
-57//         return Math.max(lh,rh)+1;
-58//     }
-59// }
+25        int ld = answer(root.left);
+26        int rd = answer(root.right);
+27        int sd = height(root.left) + height(root.right) +2;
+28
+29        return Math.max(sd, Math.max(ld, rd));
+30    }
+31
+32    public int height(TreeNode root){
+33        if(root == null){
+34            return -1;
+35        }
+36
+37        int lh = height(root.left)+1;
+38        int rh = height(root.right) +1;
+39
+40        return Math.max(lh, rh);
+41    }
+42}
