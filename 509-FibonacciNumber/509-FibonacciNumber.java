@@ -1,32 +1,19 @@
-// Last updated: 10/6/2025, 10:53:30 AM
-class Solution {
-    public int fib(int n) {
-        int[] dp = new int[n+1];
-        Arrays.fill(dp ,-1);
-        return answer(n ,dp);
-    }
-
-    // public int answer(int n, int[] dp){
-    //     if(n==0 || n==1){
-    //         return n;
-    //     }
-    //     if(dp[n] != -1){
-    //         return dp[n];
-    //     }
-
-    //     dp[n] = answer(n-1, dp) + answer(n-2 ,dp);
-    //     return dp[n];
-    // }
-
-    public int answer(int n, int[] dp){
-        if(n==0){
-            return 0;
-        }
-        dp[0] = 0;
-        dp[1] =1;
-        for(int i=2 ;i<= n;i++){
-            dp[i] = dp[i-1] + dp[i-2];
-        }
-        return dp[n];
-    }
-}
+// Last updated: 1/3/2026, 12:03:36 PM
+1class Solution {
+2    public int fib(int n) {
+3        int[] dp = new int[n+1];
+4        Arrays.fill(dp ,-1);
+5        return answer(n, dp);
+6
+7    }
+8    public int answer(int n, int[] dp){
+9        if(n == 0 || n ==1){
+10            return n;
+11        }
+12        if(dp[n] != -1){
+13            return dp[n];
+14        }
+15
+16        return dp[n] = answer(n-1, dp) + answer(n-2, dp);
+17    }
+18}
