@@ -1,26 +1,28 @@
-// Last updated: 10/10/2025, 8:11:40 PM
-class Solution {
-    public int change(int amount, int[] coins) {
-        return Coin_ChangeBU(coins,amount);
-    }
-    public static int Coin_ChangeBU(int[] coin,int amount) {
-		int[][] dp = new int[coin.length+1][amount+1];
-		for(int i=0;i<dp.length;i++) {
-			dp[i][0] = 1;				//base case hai
-		}
-		for (int i = 1; i < dp.length; i++) {
-			for (int am = 1; am < dp[0].length; am++) {
-				int inc = 0;
-				int exc = 0;
-				if(am>= coin[i-1]) {
-					inc = dp[i][am-coin[i-1]];
-				}
-				exc = dp[i-1][am];
-				dp[i][am] = inc + exc;
-			}
-			
-		}
-		return dp[dp.length-1][dp[0].length-1];
-		
-	}
-}
+// Last updated: 1/3/2026, 3:07:50 PM
+1class Solution {
+2    public int minPathSum(int[][] grid) {
+3        int[][] dp = new int[grid.length][grid[0].length];
+4        for(int[] a : dp){
+5            Arrays.fill(a, 999999);
+6        }
+7        return answer(grid, 0, 0, dp);
+8    }
+9    public int answer(int[][] arr, int cr, int cc, int[][] dp){
+10        if(cr == arr.length-1 && cc == arr[0].length -1){
+11            return arr[cr][cc];
+12        }
+13        if(cr >= arr.length || cc>=arr[0].length){
+14            return Integer.MAX_VALUE;
+15        }
+16
+17        if(dp[cr][cc] != 999999){
+18            return dp[cr][cc];
+19        }
+20
+21        int right = answer(arr, cr, cc+1, dp);
+22        int down = answer(arr, cr+1, cc, dp);
+23
+24        return dp[cr][cc] = Math.min(right, down) + arr[cr][cc];
+25    }
+26
+27}
