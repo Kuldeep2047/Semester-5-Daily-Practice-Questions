@@ -1,27 +1,27 @@
-// Last updated: 12/17/2025, 9:24:33 PM
+// Last updated: 1/3/2026, 1:11:19 PM
 1class Solution {
 2    public int uniquePaths(int m, int n) {
 3        int[][] dp = new int[m][n];
-4        return paths(0, 0, m-1, n-1 ,dp);
-5    }
-6
-7    public static int paths(int cr, int cc, int er ,int ec, int[][] dp){
-8        if(cr == er && cc == ec){
-9            return 1;
-10        }
-11
-12        if(cr > er || cc > ec){
-13            return 0;
-14        }
-15
-16        if(dp[cr][cc] != 0){
-17            return dp[cr][cc];
-18        }
-19        
-20        int a = paths(cr +1, cc, er, ec, dp);
-21        int b = paths(cr , cc+1, er, ec, dp);
-22
-23        return dp[cr][cc] = a+b;
-24        
+4        for(int[] a :dp){
+5            Arrays.fill(a,-1);
+6        }
+7        return answer(0,0,m-1,n-1, dp);
+8    }
+9    public int answer(int cr, int cc, int n, int m, int[][] dp){
+10        if(cr == n && cc == m){
+11            return 1;
+12        }
+13        if(cr >n || cc>m){
+14            return 0;
+15        }
+16
+17        if(dp[cr][cc] != -1){
+18            return dp[cr][cc];
+19        }
+20
+21        int left = answer(cr, cc+1, n, m, dp);
+22        int down = answer(cr+1, cc, n, m, dp);
+23
+24        return dp[cr][cc] = left + down;
 25    }
 26}
